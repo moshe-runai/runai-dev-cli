@@ -1,0 +1,24 @@
+{
+  "name": "runai-dev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bin/index.js",
+  "scripts": {
+    "create": "npm i -g .",
+    "dev": "nodemon ./bin/index.js"
+  },
+  "bin": {
+    "runai-dev": "./bin/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@kubernetes/client-node": "^0.18.1",
+    "boxen": "^7.1.0",
+    "chalk": "^5.2.0",
+    "console-table-printer": "^2.11.1",
+    "inquirer": "^9.2.7",
+    "nodemon": "^2.0.22"
+  }
+}
