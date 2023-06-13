@@ -2,7 +2,8 @@ import fs from "fs";
 import os from "os";
 import k8s from "@kubernetes/client-node";
 import { Table } from "console-table-printer";
-import chalk from 'chalk';
+import chalk from "chalk";
+import boxen from "boxen";
 
 function getKubeDirectoryPath() {
   const userHomeDir = os.homedir();
@@ -55,7 +56,7 @@ function getKubeConfigList() {
   try {
     const kubepath = getKubeDirectoryPath();
     const files = fs.readdirSync(kubepath);
-    return files.filter((file) => !ignoreFiles.has(file))
+    return files.filter((file) => !ignoreFiles.has(file));
   } catch (error) {
     console.error(error);
   }
@@ -68,26 +69,34 @@ export function activateConfig(filename) {
       if (err) {
         throw err;
       }
-      console.log(`${filename} is active!`);
+      const server = getServerUrl(filename);
+      console.log(`${filename} is active! you can open the link:`);
+      const urlMessage = boxen(server, {
+        title: "URL",
+        titleAlignment: "center",
+        padding: 0.5,
+        borderColor: "green",
+        dimBorder: true,
+      });
+      console.info(urlMessage);
     });
   } catch (error) {
     console.error(error);
   }
-  
 }
 
 export function getKubeConfigListOptions() {
   try {
-    const files = getKubeConfigList()
+    const files = getKubeConfigList();
 
     return files.map((file) => {
       const active = isActive(file);
 
       return {
         name: active ? chalk.yellow(`${file} (Active)`) : file,
-        value: file
-      }
-    })
+        value: file,
+      };
+    });
   } catch (error) {
     console.error(error);
   }
@@ -100,19 +109,19 @@ export function getKubeConfigListOptions() {
 function printTable(files) {
   const table = new Table({
     columns: [
-      { name: 'Name', alignment: 'left'},
-      { name: 'Active', alignment: 'left'},
-      { name: 'URL', alignment: 'left'},
+      { name: "Name", alignment: "left" },
+      { name: "Active", alignment: "left" },
+      { name: "URL", alignment: "left" },
     ],
   });
 
-  files.forEach((file) => table.addRow(file, { color: file.Active ? 'yellow' : 'white' }))
+  files.forEach((file) => table.addRow(file, { color: file.Active ? "yellow" : "white" }));
   table.printTable();
 }
 
 export function executeKubeConfig(answers) {
   try {
-    const files = getKubeConfigList()
+    const files = getKubeConfigList();
     const filesTable = [];
     files.forEach((file) => {
       const server = getServerUrl(file);
