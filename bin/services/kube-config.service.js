@@ -62,6 +62,19 @@ function getKubeConfigList() {
   }
 }
 
+function printTable(files) {
+  const table = new Table({
+    columns: [
+      { name: "Name", alignment: "left" },
+      { name: "Active", alignment: "left" },
+      { name: "URL", alignment: "left" },
+    ],
+  });
+
+  files.forEach((file) => table.addRow(file, { color: file.Active ? "yellow" : "white" }));
+  table.printTable();
+}
+
 export function activateConfig(filename) {
   try {
     const kubepath = getKubeDirectoryPath();
@@ -102,24 +115,7 @@ export function getKubeConfigListOptions() {
   }
 }
 
-// TODO:
-// add an option to display server urls
-
-// old version
-function printTable(files) {
-  const table = new Table({
-    columns: [
-      { name: "Name", alignment: "left" },
-      { name: "Active", alignment: "left" },
-      { name: "URL", alignment: "left" },
-    ],
-  });
-
-  files.forEach((file) => table.addRow(file, { color: file.Active ? "yellow" : "white" }));
-  table.printTable();
-}
-
-export function executeKubeConfig(answers) {
+export function listEnvs() {
   try {
     const files = getKubeConfigList();
     const filesTable = [];
@@ -128,7 +124,7 @@ export function executeKubeConfig(answers) {
       const active = isActive(file);
       filesTable.push({
         Name: file,
-        Active: active,
+        Active: active ? true : '',
         URL: server,
       });
     });

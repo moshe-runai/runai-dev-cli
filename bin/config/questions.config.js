@@ -1,7 +1,8 @@
 export const ROOT_OPTIONS = {
   PORT_FORWARD: "Port Forward",
   EDIT_DEPLOYMENT: "Edit Deployment",
-  KUBE_CONFIG: "Kube config",
+  KUBE_CONFIG: "Edit kube config",
+  LIST_ENVS: "List envs",
   EXIT: "Exit",
 };
 
@@ -20,6 +21,7 @@ export const EDIT_DEPLOYMENT_OPTIONS = {
   BACKEND: "Backend",
   FRONTEND: "Frontend",
   ASSET: "Asset service",
+  POLICY: "Policy service",
   EXIT: "Exit",
 };
 
@@ -32,7 +34,7 @@ export const questions = {
     type: "list",
     name: "main",
     message: "What would you like to do?",
-    choices: [ROOT_OPTIONS.PORT_FORWARD, ROOT_OPTIONS.EDIT_DEPLOYMENT, ROOT_OPTIONS.KUBE_CONFIG, ROOT_OPTIONS.EXIT],
+    choices: [ROOT_OPTIONS.PORT_FORWARD, ROOT_OPTIONS.EDIT_DEPLOYMENT, ROOT_OPTIONS.KUBE_CONFIG, ROOT_OPTIONS.LIST_ENVS, ROOT_OPTIONS.EXIT],
   },
   portForward: {
     type: "list",
@@ -59,6 +61,7 @@ export const questions = {
       EDIT_DEPLOYMENT_OPTIONS.BACKEND,
       EDIT_DEPLOYMENT_OPTIONS.FRONTEND,
       EDIT_DEPLOYMENT_OPTIONS.ASSET,
+      EDIT_DEPLOYMENT_OPTIONS.POLICY,
       EDIT_DEPLOYMENT_OPTIONS.EXIT,
     ],
   },

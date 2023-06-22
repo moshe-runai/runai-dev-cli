@@ -15,6 +15,10 @@ function getAssetServiceOptions() {
   return [...deploymentOptoins, "runai-backend-assets-service"]
 }
 
+function getPolicyServiceOptions() {
+  return [...deploymentOptoins, "runai-backend-policy-service"]
+}
+
 export function executeEditDeployment(answers) {
   switch (answers.editDeployment) {
     case EDIT_DEPLOYMENT_OPTIONS.BACKEND: 
@@ -25,6 +29,9 @@ export function executeEditDeployment(answers) {
       break;
     case EDIT_DEPLOYMENT_OPTIONS.ASSET: 
       run("kubectl", getAssetServiceOptions())
+      break;
+    case EDIT_DEPLOYMENT_OPTIONS.POLICY: 
+      run("kubectl", getPolicyServiceOptions())
       break;
     case EDIT_DEPLOYMENT_OPTIONS.EXIT: 
       break;

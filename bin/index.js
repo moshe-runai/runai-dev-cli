@@ -5,7 +5,7 @@ import inquirer from "inquirer";
 import { questions, ROOT_OPTIONS, PORT_OPTIONS, PORT_FORWARD_OPTIONS } from "./config/questions.config.js";
 import { executePortForward } from "./services/port-forward.service.js";
 import { executeEditDeployment } from "./services/edit-deploy.service.js";
-import { activateConfig } from "./services/kube-config.service.js";
+import { activateConfig, listEnvs } from "./services/kube-config.service.js";
 
 const helloMessage = boxen("Usage: runai-dev", {
   title: "runai-dev cli",
@@ -54,6 +54,9 @@ inquirer
         if (answers.activateCluster !== "Exit") {
           activateConfig(answers.activateCluster);
         }
+        break;
+      case ROOT_OPTIONS.LIST_ENVS:
+        listEnvs();
         break;
     }
   })
