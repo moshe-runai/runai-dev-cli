@@ -1,7 +1,7 @@
 export const ROOT_OPTIONS = {
   PORT_FORWARD: "Port Forward",
   EDIT_DEPLOYMENT: "Edit Deployment",
-  KUBE_CONFIG: "Edit kube config",
+  KUBE_CONFIG: "Activate kube config",
   LIST_ENVS: "List envs",
   EXIT: "Exit",
 };
