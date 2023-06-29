@@ -9,6 +9,8 @@ export const ROOT_OPTIONS = {
 export const PORT_FORWARD_OPTIONS = {
   BACKEND: "Backend",
   DATABASE: "Database",
+  TENANTS_MANAGER: "Tenants Manager",
+  THANOS: "Thanos",
   EXIT: "Exit",
 };
 
@@ -34,13 +36,25 @@ export const questions = {
     type: "list",
     name: "main",
     message: "What would you like to do?",
-    choices: [ROOT_OPTIONS.PORT_FORWARD, ROOT_OPTIONS.EDIT_DEPLOYMENT, ROOT_OPTIONS.KUBE_CONFIG, ROOT_OPTIONS.LIST_ENVS, ROOT_OPTIONS.EXIT],
+    choices: [
+      ROOT_OPTIONS.PORT_FORWARD,
+      ROOT_OPTIONS.EDIT_DEPLOYMENT,
+      ROOT_OPTIONS.KUBE_CONFIG,
+      ROOT_OPTIONS.LIST_ENVS,
+      ROOT_OPTIONS.EXIT,
+    ],
   },
   portForward: {
     type: "list",
     name: "portForward",
     message: ROOT_OPTIONS.PORT_FORWARD,
-    choices: [PORT_FORWARD_OPTIONS.BACKEND, PORT_FORWARD_OPTIONS.DATABASE, PORT_FORWARD_OPTIONS.EXIT],
+    choices: [
+      PORT_FORWARD_OPTIONS.BACKEND,
+      PORT_FORWARD_OPTIONS.DATABASE,
+      PORT_FORWARD_OPTIONS.TENANTS_MANAGER,
+      PORT_FORWARD_OPTIONS.THANOS,
+      PORT_FORWARD_OPTIONS.EXIT,
+    ],
   },
   portOptions: {
     type: "list",

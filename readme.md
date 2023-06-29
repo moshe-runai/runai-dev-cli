@@ -3,6 +3,8 @@ Features:
 1. Port forwart to:
   1.1 Backend
   1.2 Database
+  1.3 Tenants Manager
+  1.4 Thanos
 2. Edit Deployment:
   2.1 Backend
   2.2 Frontend

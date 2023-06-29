@@ -9,6 +9,14 @@ function getDatabaseOptions(port = 5432) {
   return ["-n", "runai-backend", "port-forward", "service/runai-backend-postgresql", port]
 }
 
+function getTenantsManagerOptions(port = 8080) {
+  return ["-n", "runai-backend", "port-forward", "service/unai-backend-tenants-manager", port]
+}
+
+function getThanosOptions(port = 9090) {
+  return ["-n", "runai-backend", "port-forward", "service/runai-backend-thanos-query", port]
+}
+
 export function executePortForward(answers) {
   let port;
   if (answers.portOptions === PORT_OPTIONS.CUSTOM) {
@@ -21,6 +29,12 @@ export function executePortForward(answers) {
       break;
     case PORT_FORWARD_OPTIONS.DATABASE: 
       run("kubectl", getDatabaseOptions(port))
+      break;
+    case PORT_FORWARD_OPTIONS.TENANTS_MANAGER: 
+      run("kubectl", getTenantsManagerOptions(port))
+      break;
+    case PORT_FORWARD_OPTIONS.THANOS: 
+      run("kubectl", getThanosOptions(port))
       break;
     case PORT_FORWARD_OPTIONS.EXIT: 
       break;
