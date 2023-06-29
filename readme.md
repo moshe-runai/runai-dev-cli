@@ -1,8 +1,15 @@
 ## CLI for the runai developers
 Features:
-1. Port forwart to: Backend/ Mysql
-2. Edit Deployment: Backend/ Frontend / Asset Service
+1. Port forwart to:
+  1.1 Backend
+  1.2 Database
+2. Edit Deployment:
+  2.1 Backend
+  2.2 Frontend
+  2.3 Asset Service
+  2.4 Policy Service
 3. Activate Kube config
+4. List Environments
 
 ## Installation
 ```
