@@ -1,6 +1,10 @@
 import { run } from "./command.service.js"
 import { PORT_FORWARD_OPTIONS, PORT_OPTIONS } from "../config/questions.config.js"
 
+function getTraefikOptions(port = 8080) {
+  return ["-n", "runai-backend", "port-forward", "service/runai-backend-traefik", port]
+}
+
 function getBackendOptions(port = 7000) {
   return ["-n", "runai-backend", "port-forward", "service/runai-backend-backend", port]
 }
@@ -24,6 +28,9 @@ export function executePortForward(answers) {
   }
 
   switch (answers.portForward) {
+    case PORT_FORWARD_OPTIONS.TRAEFIK: 
+      run("kubectl", getTraefikOptions(port))
+      break;
     case PORT_FORWARD_OPTIONS.BACKEND: 
       run("kubectl", getBackendOptions(port))
       break;
