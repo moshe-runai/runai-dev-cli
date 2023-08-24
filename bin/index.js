@@ -7,6 +7,8 @@ import { executePortForward } from "./services/port-forward.service.js";
 import { executeEditDeployment } from "./services/edit-deploy.service.js";
 import { activateConfig, listEnvs } from "./services/kube-config.service.js";
 
+import { run } from "./services/command.service.js";
+
 const helloMessage = boxen("Usage: runai-dev", {
   title: "runai-dev cli",
   titleAlignment: "center",
@@ -57,6 +59,11 @@ inquirer
         break;
       case ROOT_OPTIONS.LIST_ENVS:
         listEnvs();
+      case ROOT_OPTIONS.EDIT_CONFIGMAPS:
+        run("kubectl", ["edit", "configmaps", "-n", "runai-backend", "runai-backend-backend"]);
+        break;
+      case ROOT_OPTIONS.ROLLOUT:
+        run("kubectl", ["rollout", "restart", "deploy/runai-backend-backend", "-n", "runai-backend"]);
         break;
     }
   })

@@ -3,6 +3,8 @@ export const ROOT_OPTIONS = {
   EDIT_DEPLOYMENT: "Edit Deployment",
   KUBE_CONFIG: "Activate kube config",
   LIST_ENVS: "List envs",
+  EDIT_CONFIGMAPS: "Edit backend configmaps",
+  ROLLOUT: "Rollout backend",
   EXIT: "Exit",
 };
 
@@ -42,6 +44,8 @@ export const questions = {
       ROOT_OPTIONS.EDIT_DEPLOYMENT,
       ROOT_OPTIONS.KUBE_CONFIG,
       ROOT_OPTIONS.LIST_ENVS,
+      ROOT_OPTIONS.EDIT_CONFIGMAPS,
+      ROOT_OPTIONS.ROLLOUT,
       ROOT_OPTIONS.EXIT,
     ],
   },
