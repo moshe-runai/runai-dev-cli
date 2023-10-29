@@ -22,7 +22,10 @@ function getServerUrl(filename) {
       .filter((cluster) => {
         return cluster.server.includes("kubernetes.docker") ? false : true;
       })
-      .map((cluster) => cluster.server);
+      .map((cluster) => {
+        const splitted = cluster.server.split(":")
+        return `${splitted[0]}:${splitted[1]}`
+      });
 
     return servers[0];
   } catch (error) {

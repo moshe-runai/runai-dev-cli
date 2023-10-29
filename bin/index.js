@@ -59,6 +59,7 @@ inquirer
         break;
       case ROOT_OPTIONS.LIST_ENVS:
         listEnvs();
+        break;
       case ROOT_OPTIONS.EDIT_CONFIGMAPS:
         run("kubectl", ["edit", "configmaps", "-n", "runai-backend", "runai-backend-backend"]);
         break;
