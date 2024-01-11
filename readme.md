@@ -2,10 +2,11 @@
 ## Features:
 1. Port forwart to:
 ```
-  1. Backend
-  2. Database
-  3. Tenants Manager
-  4. Thanos
+  1. Traefik
+  2. Backend
+  3. Database
+  4. Tenants Manager
+  5. Thanos
 ```
 2. Edit Deployment:
 ```
@@ -16,6 +17,8 @@
 ```
 3. Activate Kube config
 4. List Environments
+4. Edit backend configmaps
+4. Rollout backend
 
 ## Installation
 ```
