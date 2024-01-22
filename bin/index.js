@@ -61,6 +61,7 @@ inquirer
         listEnvs();
         break;
       case ROOT_OPTIONS.EDIT_CONFIGMAPS:
+        console.info('To add alpha flag add this to configmaps: SHOW_ALPHA_FLAGS: "true"');
         run("kubectl", ["edit", "configmaps", "-n", "runai-backend", "runai-backend-backend"]);
         break;
       case ROOT_OPTIONS.ROLLOUT:
