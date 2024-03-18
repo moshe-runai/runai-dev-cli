@@ -19,6 +19,10 @@ function getPolicyServiceOptions() {
   return [...deploymentOptoins, "runai-backend-policy-service"]
 }
 
+function getClusterServiceOptions() {
+  return [...deploymentOptoins, "runai-backend-cluster-service"]
+}
+
 export function executeEditDeployment(answers) {
   switch (answers.editDeployment) {
     case EDIT_DEPLOYMENT_OPTIONS.BACKEND: 
@@ -32,6 +36,9 @@ export function executeEditDeployment(answers) {
       break;
     case EDIT_DEPLOYMENT_OPTIONS.POLICY: 
       run("kubectl", getPolicyServiceOptions())
+      break;
+    case EDIT_DEPLOYMENT_OPTIONS.CLUSTER_SERVICE: 
+      run("kubectl", getClusterServiceOptions())
       break;
     case EDIT_DEPLOYMENT_OPTIONS.EXIT: 
       break;
