@@ -28,6 +28,7 @@ export const EDIT_DEPLOYMENT_OPTIONS = {
   ASSET: "Asset service",
   POLICY: "Policy service",
   CLUSTER_SERVICE: "Cluster service",
+  WORKLOAD_SERVICE: "Workload service",
   EXIT: "Exit",
 };
 
@@ -84,6 +85,7 @@ export const questions = {
       EDIT_DEPLOYMENT_OPTIONS.ASSET,
       EDIT_DEPLOYMENT_OPTIONS.POLICY,
       EDIT_DEPLOYMENT_OPTIONS.CLUSTER_SERVICE,
+      EDIT_DEPLOYMENT_OPTIONS.WORKLOAD_SERVICE,
       EDIT_DEPLOYMENT_OPTIONS.EXIT,
     ],
   },

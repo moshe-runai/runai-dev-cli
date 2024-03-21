@@ -23,6 +23,10 @@ function getClusterServiceOptions() {
   return [...deploymentOptoins, "runai-backend-cluster-service"]
 }
 
+function getWorkloadServiceOptions() {
+  return [...deploymentOptoins, "runai-backend-workloads"]
+}
+
 export function executeEditDeployment(answers) {
   switch (answers.editDeployment) {
     case EDIT_DEPLOYMENT_OPTIONS.BACKEND: 
@@ -39,6 +43,9 @@ export function executeEditDeployment(answers) {
       break;
     case EDIT_DEPLOYMENT_OPTIONS.CLUSTER_SERVICE: 
       run("kubectl", getClusterServiceOptions())
+      break;
+    case EDIT_DEPLOYMENT_OPTIONS.WORKLOAD_SERVICE: 
+      run("kubectl", getWorkloadServiceOptions())
       break;
     case EDIT_DEPLOYMENT_OPTIONS.EXIT: 
       break;
